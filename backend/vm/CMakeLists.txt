@@ -2,7 +2,7 @@ project(NightLangVM)
 set(PRJ_NAME "night_vm")
 
 file(GLOB PRJ_SOURCES
-src/test.cpp
+src/program.cpp
 )
 
 set(PRJ_DEFINITIONS)
