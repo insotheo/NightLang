@@ -2,10 +2,15 @@
 #define NIGHT_VM_VALUE_H
 
 #include "export.h"
-#include <variant>
 #include <cstdint>
 
-using ConstValue = std::variant<int64_t, double>;
+struct ConstValue{
+    enum class Type: uint8_t {INT, DOUBLE} type;
+    union {
+        int64_t i;
+        double d;
+    };
+};
 
 namespace NightVM{
     NIGHT_VM_API void print2console(const ConstValue& cval); //FOR DBG

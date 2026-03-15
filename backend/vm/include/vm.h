@@ -3,6 +3,7 @@
 
 #include "export.h"
 #include "program.h"
+#include "typedefs.h"
 #include "value.h"
 
 #define VM_STACK_SIZE 128
@@ -37,6 +38,9 @@ namespace NightVM{
             }
             return *--sp;
         }
+
+        //memory
+        InstructionArg read_bytes(InstructionPtr& ip);
 
         //
         void run_function(size_t func_id);

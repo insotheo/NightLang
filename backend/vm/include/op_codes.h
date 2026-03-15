@@ -1,10 +1,10 @@
 #ifndef NIGHT_VM_OP_CODES_H
 #define NIGHT_VM_OP_CODES_H
 
-#include <cstdint>
+#include "typedefs.h"
 
 namespace NightVM {
-    enum class OpCode: uint8_t{
+    enum OpCode: Byte{
         OP_PUSH_CONST,
         OP_RET,
     };
