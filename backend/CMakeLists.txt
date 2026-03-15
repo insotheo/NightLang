@@ -9,8 +9,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(NightLang)
 
-file(GLOB PRJ_SOURCES
-src/main.cpp
-)
-
-add_executable(${PROJECT_NAME} ${PRJ_SOURCES})
+add_subdirectory(vm)
+add_subdirectory(vm_app)

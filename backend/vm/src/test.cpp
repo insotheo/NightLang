@@ -1,6 +1,7 @@
+#include "test.h"
+
 #include <stdio.h>
 
-int main(void){
+void test(){
     printf("Hello, World!");
-    return 0;
 }
