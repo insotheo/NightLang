@@ -1,7 +1,7 @@
-#include "op_codes.h"
-#include <iostream>
+#include <op_codes.h>
 #include <program.h>
-#include <string>
+#include <vm.h>
+#include <stdio.h>
 
 int main(void){
     NightVM::Program prog{
@@ -15,11 +15,10 @@ int main(void){
         },
         .constant_pool = { 0 }
     };
-
-    for(const auto& op : prog.functions[0].body){
-        std::cout << (int)op.code << " " << (op.arg0.has_value() ? std::to_string(op.arg0.value()) : "") << "\n";
-
-    }
+    printf("Size of the program: %llu bytes\n", sizeof(prog));
     
+    NightVM::VM vm(prog);
+    vm.run(0);
+
     return 0;
 }

@@ -5,8 +5,8 @@
 
 namespace NightVM {
     enum class OpCode: uint8_t{
-        OP_RET,
         OP_PUSH_CONST,
+        OP_RET,
     };
 }
 
