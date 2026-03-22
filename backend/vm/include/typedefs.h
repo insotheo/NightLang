@@ -8,4 +8,8 @@ typedef uint32_t BytecodeIndex; //for index, offset in bytecode
 typedef uint32_t InstructionArg;
 typedef uint8_t* InstructionPtr;
 
+//types for VM
+typedef int64_t NightInt;
+typedef double NightFloat;
+
 #endif

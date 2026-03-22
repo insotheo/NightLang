@@ -8,8 +8,8 @@ namespace NightVM{
         if(cval.type == ConstValue::Type::INT)
             std::cout << cval.i << "\n";
 
-        else if(cval.type == ConstValue::Type::DOUBLE)
-            std::cout << cval.d << "\n";
+        else if(cval.type == ConstValue::Type::FLOAT)
+            std::cout << cval.f << "\n";
     }
     
 }

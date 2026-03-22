@@ -2,13 +2,14 @@
 #define NIGHT_VM_VALUE_H
 
 #include "export.h"
+#include "typedefs.h"
 #include <cstdint>
 
 struct ConstValue{
-    enum class Type: uint8_t {INT, DOUBLE} type;
+    enum class Type: uint8_t {INT, FLOAT} type;
     union {
-        int64_t i;
-        double d;
+        NightInt i;
+        NightFloat f;
     };
 };
 

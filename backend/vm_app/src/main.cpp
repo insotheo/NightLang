@@ -9,8 +9,7 @@ int main(void){
         .bytecode{
             OpCode::OP_PUSH_CONST, 0x00, 0x00, 0x00, 0x00,
             OpCode::OP_PUSH_CONST, 0x01, 0x00, 0x00, 0x00,
-            OpCode::OP_PUSH_CONST, 0x02, 0x00, 0x00, 0x00,
-            OpCode::OP_PUSH_CONST, 0x03, 0x00, 0x00, 0x00,
+            OpCode::OP_SHL_I,
             OpCode::OP_RET
         },
         .functions =  {
@@ -19,7 +18,7 @@ int main(void){
                 .length = 0,
             }
         },
-        .constant_pool = { {.type=ConstValue::Type::DOUBLE, .d=3.14}, {.type=ConstValue::Type::INT, .i=1}, {.type=ConstValue::Type::INT, .i=1000000}, {.type=ConstValue::Type::DOUBLE, .d=2.71}, }
+        .constant_pool = { {.type=ConstValue::Type::INT, .i=1}, {.type=ConstValue::Type::INT, .i=10}, }
     };
     prog.functions[0].length = prog.bytecode.size();
     
