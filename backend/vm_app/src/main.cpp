@@ -18,7 +18,7 @@ int main(void){
                 .length = 0,
             }
         },
-        .constant_pool = { {.type=ConstValue::Type::INT, .i=1}, {.type=ConstValue::Type::INT, .i=10}, }
+        .constant_pool = { {.type=ConstValue::Type::INT, .i=5}, {.type=ConstValue::Type::INT, .i=2}, }
     };
     prog.functions[0].length = prog.bytecode.size();
     

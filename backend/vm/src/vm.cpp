@@ -15,6 +15,8 @@ namespace NightVM{
             &&op_push_const,
             &&op_ret,
 
+            &&op_inc_i,
+            &&op_dec_i,
             &&op_add_i,
             &&op_sub_i,
             &&op_mul_i,
@@ -25,6 +27,7 @@ namespace NightVM{
             &&op_and_i,
             &&op_or_i,
             &&op_xor_i,
+            &&op_not_i,
             &&op_neg_i,
             
             &&op_add_f,
@@ -68,6 +71,8 @@ namespace NightVM{
             DISPATCH();
         }
 
+        UNARY_OPERATION(op_inc_i, NightInt, i, ++)
+        UNARY_OPERATION(op_dec_i, NightInt, i, --)
         BINARY_OPERATION(op_add_i, NightInt, i, +)
         BINARY_OPERATION(op_sub_i, NightInt, i, -)
         BINARY_OPERATION(op_mul_i, NightInt, i, *)
@@ -78,7 +83,8 @@ namespace NightVM{
         BINARY_OPERATION(op_and_i, NightInt, i, &)
         BINARY_OPERATION(op_or_i, NightInt, i, |)
         BINARY_OPERATION(op_xor_i, NightInt, i, ^)
-        UNARY_OPERATION(op_neg_i, NightInt, i, ~)
+        UNARY_OPERATION(op_not_i, NightInt, i, ~)
+        UNARY_OPERATION(op_neg_i, NightInt, i, -)
 
         BINARY_OPERATION(op_add_f, NightFloat, f, +)
         BINARY_OPERATION(op_sub_f, NightFloat, f, -)

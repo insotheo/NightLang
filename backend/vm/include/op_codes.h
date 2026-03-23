@@ -8,6 +8,8 @@ namespace NightVM {
         OP_PUSH_CONST,
         OP_RET,
 
+        OP_INC_I,
+        OP_DEC_I,
         OP_ADD_I,
         OP_SUB_I,
         OP_MUL_I,
@@ -18,7 +20,8 @@ namespace NightVM {
         OP_AND_I,
         OP_OR_I,
         OP_XOR_I,
-        OP_NEG_I, //~
+        OP_NOT_I, //~
+        OP_NEG_I, //-
 
         OP_ADD_F,
         OP_SUB_F,
