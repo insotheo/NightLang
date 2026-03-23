@@ -5,9 +5,13 @@
 
 namespace NightVM {
     enum OpCode: Byte{
-        OP_PUSH_CONST,
+        OP_PUSH_CONST_1B,
+        OP_PUSH_CONST_2B,
+        OP_PUSH_CONST_4B,
+
         OP_RET,
 
+        //Int op
         OP_INC_I,
         OP_DEC_I,
         OP_ADD_I,
@@ -23,6 +27,7 @@ namespace NightVM {
         OP_NOT_I, //~
         OP_NEG_I, //-
 
+        //Float op
         OP_ADD_F,
         OP_SUB_F,
         OP_MUL_F,

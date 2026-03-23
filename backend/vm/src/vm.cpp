@@ -12,7 +12,10 @@ namespace NightVM{
         ip += func.offset;
 
         static void* dispatch_tabel[]{ //THE SAME ORDER AS OpCode!!!
-            &&op_push_const,
+            &&op_push_const_1b,
+            &&op_push_const_2b,
+            &&op_push_const_4b,
+
             &&op_ret,
 
             &&op_inc_i,
@@ -36,16 +39,14 @@ namespace NightVM{
             &&op_div_f,
         };
 
-        #define DISPATCH() goto *dispatch_tabel[*ip]
-        #define INC_IP() ip++
-        #define READ_ARG() read_bytes(ip)
+        #define DISPATCH() goto *dispatch_tabel[*ip++]
+        #define READ_ARG(bytes) read_bytes(ip, bytes)
         #define FAST_POP() (--sp)
 
         //code generators
         #define BINARY_OPERATION(op_name, type, field, op)\
         op_name:\
         {\
-            INC_IP();\
             type b = FAST_POP()->field;\
             type a = FAST_POP()->field;\
             (sp++)->field = a op b;\
@@ -54,9 +55,14 @@ namespace NightVM{
         #define UNARY_OPERATION(op_name, type, field, op)\
         op_name:\
         {\
-            INC_IP();\
             type a = FAST_POP()->field;\
             (sp++)->field = op a;\
+            DISPATCH();\
+        }
+        #define PUSH(name, source, bytes)\
+        name:\
+        {\
+            push(source[READ_ARG(bytes)]);\
             DISPATCH();\
         }
 
@@ -64,12 +70,9 @@ namespace NightVM{
         //code execution
         DISPATCH();
 
-        op_push_const:
-        {
-            INC_IP();
-            push(m_program.constant_pool[READ_ARG()]);
-            DISPATCH();
-        }
+        PUSH(op_push_const_1b, m_program.constant_pool, 1)
+        PUSH(op_push_const_2b, m_program.constant_pool, 2)
+        PUSH(op_push_const_4b, m_program.constant_pool, 4)
 
         UNARY_OPERATION(op_inc_i, NightInt, i, ++)
         UNARY_OPERATION(op_dec_i, NightInt, i, --)
@@ -98,10 +101,10 @@ namespace NightVM{
         }
     }
 
-    InstructionArg VM::read_bytes(InstructionPtr& ip){
+    InstructionArg VM::read_bytes(InstructionPtr& ip, const Byte bytes_count){
         InstructionArg val = 0;
-        std::memcpy(&val, ip, 4);
-        ip += 4;
+        std::memcpy(&val, ip, bytes_count);
+        ip += bytes_count;
         return val;
     }
 }

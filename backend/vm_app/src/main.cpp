@@ -7,8 +7,8 @@ using NightVM::OpCode;
 int main(void){
     NightVM::Program prog{
         .bytecode{
-            OpCode::OP_PUSH_CONST, 0x00, 0x00, 0x00, 0x00,
-            OpCode::OP_PUSH_CONST, 0x01, 0x00, 0x00, 0x00,
+            OpCode::OP_PUSH_CONST_1B, 0x00,
+            OpCode::OP_PUSH_CONST_1B, 0x01,
             OpCode::OP_SHL_I,
             OpCode::OP_RET
         },

@@ -40,7 +40,7 @@ namespace NightVM{
         }
 
         //memory
-        InstructionArg read_bytes(InstructionPtr& ip);
+        InstructionArg read_bytes(InstructionPtr& ip, const Byte bytes_count);
 
         //
         void run_function(size_t func_id);
